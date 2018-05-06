@@ -12,7 +12,7 @@ describe('EYES', () => {
 
       const res = await execa('node', [
         require.resolve('jest/bin/jest'),
-        require.resolve('./__fixtures__/test.customSpec'),
+        require.resolve('./__fixtures__/test.jest'),
         dargs(options),
       ]);
 
