@@ -11,15 +11,7 @@ describe('EYES', () => {
       const p = new Promise(resolve => (fullfill = resolve));
 
       const res = spawn('node', [
-        path.join(
-          __dirname,
-          '..',
-          '..',
-          'node_modules',
-          'jest',
-          'bin',
-          'jest.js',
-        ),
+        path.join(__dirname, '..', 'node_modules', 'jest', 'bin', 'jest.js'),
         path.join(__dirname, '__fixtures__', 'test.customSpec.js'),
         `--config=${path.join(__dirname, '__fixtures__', 'conf.json')}`,
       ]);
