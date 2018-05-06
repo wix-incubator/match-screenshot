@@ -16,8 +16,6 @@ it(`should work with chai`, async function() { // eslint-disable-line
       '--disable-dev-shm-usage', // https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#tips
     ],
   });
-  console.log('*****************************');
-  // expect(true).to.eql(true);
 
   const page = await browser.newPage();
   await page.setContent('<div>Hi there chai!</div>');
