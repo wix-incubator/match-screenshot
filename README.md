@@ -48,8 +48,8 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
     ```js
     const {Assertion} = require('chai');
-    const {mocha} = require('match-screenshot');
-    Assertion.addMethod('toMatchScreenshot', mocha);
+    const toMatchScreenshot = require('match-screenshot/chai');
+    Assertion.addMethod('toMatchScreenshot', toMatchScreenshot);
     ```
 
 3. Use the matcher
