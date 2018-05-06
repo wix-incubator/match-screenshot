@@ -2,7 +2,6 @@
   "name": "match-screenshot",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/index.js",
   "author": "Yaniv Efraim <yanivef@wix.com>",
   "repository": {
     "type": "git",
