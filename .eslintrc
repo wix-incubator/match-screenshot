@@ -1,0 +1,39 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": [
+    "prettier",
+    "jest"
+  ],
+  "rules": {
+    "arrow-body-style": "off",
+    "consistent-return": "off",
+    "class-methods-use-this": "off",
+    "global-require": "off",
+    "no-plusplus": "off",
+    "no-confusing-arrow": "off",
+    "no-console": "off",
+    "no-multi-assign": "off",
+    "no-param-reassign": "off",
+    "no-return-assign": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-expressions": "off",
+    "no-use-before-define": "off",
+    "import/no-dynamic-require": "off",
+    "func-names": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "bracketSpacing": false,
+        "printWidth": 80,
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ]
+  },
+  "env": {
+    "jest/globals": true
+  },
+  "globals": {
+    "fail": true
+  }
+}
