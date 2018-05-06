@@ -1,6 +1,6 @@
 # match-screenshot
 
-A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](https://applitools.com/) (other flatforms will be supported as well, TBD)
+A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](https://applitools.com/) (other platforms will be supported as well, TBD)
 
 
 ## Usage
