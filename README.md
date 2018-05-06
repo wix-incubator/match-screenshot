@@ -24,10 +24,10 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
       add an `.env` file, with:
 
-        ```
+      ```
           EYES_API_KEY=<your key here>
           ENABLE_EYES=true
-        ```
+      ```
 
       - this step is not mandatory - you should use it if you want to use eyes when running locally.
       - **you should put your `.env` file in git ignore!!!**
@@ -68,13 +68,13 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
 When you change production code implementation, Eyes will break, and you will have to go to its management Dashboard and approve the change. In order to avoid that, you can assign a new version and create a new baseline:
 
-    ```js
+```js
         it('my test', async () {
           await page.goto('http://www.wix.com');
           const screenshot = await page.screenshot();
           expect(screenshot).toMatchScreenshot({description: 'my test', {version: 'v1.0.1'}});
         });
-    ```
+```
 
 
 ## How does it work
