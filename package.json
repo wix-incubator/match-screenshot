@@ -10,7 +10,7 @@
   },
   "scripts": {
     "posttest": "eslint .",
-    "test": "jest toMatchScreenshotEyes.test.js"
+    "test": "jest"
   },
   "jest": {
     "preset": "jest-puppeteer",
