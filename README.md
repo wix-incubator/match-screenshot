@@ -19,7 +19,7 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
     #### CI
 
-      Travis: go to your build's `options -> settings -> Environment Variables` and add `EYES_API_KEY` + your key && `ENABLE_EYES`: true
+      Travis: go to your build's `options -> settings -> Environment Variables` and add `EYES_API_KEY` + your key
 
 
     #### locally
@@ -28,7 +28,6 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
       ```
       EYES_API_KEY=<your key here>
-      ENABLE_EYES=true
       ```
 
       - this step is not mandatory - you should use it if you want to use eyes when running locally.
