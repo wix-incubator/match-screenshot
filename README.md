@@ -1,5 +1,7 @@
 # match-screenshot
 
+[![Build Status](https://travis-ci.org/wix-incubator/match-screenshot.svg?branch=master)](https://travis-ci.org/wix-incubator/match-screenshot)
+
 A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](https://applitools.com/) (other platforms will be supported as well, TBD)
 
 
@@ -13,7 +15,7 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
 2. Setup eyes env variable
 
-    Add `EYES_API_KEY`: <your eyes [key](https://applitools.com/docs/topics/overview/obtain-api-key.html)> and `ENABLE_EYES: true` environment variables:
+    Add `EYES_API_KEY` environment variable, with your eyes [key](https://applitools.com/docs/topics/overview/obtain-api-key.html) 
 
     #### CI
 
