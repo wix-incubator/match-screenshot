@@ -39,7 +39,7 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
     ```js
     "jest": {
-      "setupTestFrameworkScriptFile": "match-screenshot/lib/jest"
+      "setupTestFrameworkScriptFile": "match-screenshot/jest"
     },
     ```
 
