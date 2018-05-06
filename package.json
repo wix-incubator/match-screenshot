@@ -9,7 +9,7 @@
   },
   "scripts": {
     "posttest": "eslint .",
-    "test": "jest"
+    "test": "jest toMatchScreenshotJest.test.js && jest toMatchScreenshotChai.test.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
