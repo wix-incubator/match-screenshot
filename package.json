@@ -12,7 +12,7 @@
   },
   "scripts": {
     "posttest": "eslint .",
-    "test": "jest toMatchScreenshotJest.test.js && jest toMatchScreenshotChai.test.js",
+    "test": "jest",
     "release": "wnpm-release --no-shrinkwrap"
   },
   "jest": {
