@@ -21,7 +21,7 @@ it(`should work with chai`, async function() { // eslint-disable-line
   await page.setContent('<div>Hi there chai!</div>');
   const screenshot = await page.screenshot({fullpage: true});
   await expect(screenshot).toMatchScreenshot({
-    description: 'should work with chai',
+    key: 'should work with chai',
   });
   await browser.close();
 });

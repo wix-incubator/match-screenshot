@@ -15,7 +15,7 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
 
 2. Setup eyes env variable
 
-    Add `EYES_API_KEY` environment variable, with your eyes [key](https://applitools.com/docs/topics/overview/obtain-api-key.html) 
+    Add `EYES_API_KEY` environment variable, with your eyes [key](https://applitools.com/docs/topics/overview/obtain-api-key.html)
 
     #### CI
 
@@ -60,7 +60,7 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
     it('my test', async () {
       await page.goto('http://www.wix.com');
       const screenshot = await page.screenshot();
-      await expect(screenshot).toMatchScreenshot({description: 'my test'});
+      await expect(screenshot).toMatchScreenshot({key: 'my test'});
     });
     ```
 
@@ -73,7 +73,7 @@ When you change production code implementation, Eyes will break, and you will ha
   it('my test', async () {
     await page.goto('http://www.wix.com');
     const screenshot = await page.screenshot();
-    await expect(screenshot).toMatchScreenshot({description: 'my test', {version: 'v1.0.1'}});
+    await expect(screenshot).toMatchScreenshot({key: 'my test', {version: 'v1.0.1'}});
   });
 ```
 
