@@ -12,7 +12,7 @@
   },
   "scripts": {
     "posttest": "eslint .",
-    "test": "jest",
+    "test": "jest --maxWorkers=3",
     "release": "wnpm-release --no-shrinkwrap"
   },
   "jest": {
