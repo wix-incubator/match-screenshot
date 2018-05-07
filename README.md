@@ -77,6 +77,13 @@ When you change production code implementation, Eyes will break, and you will ha
   });
 ```
 
+## api
+
+### toMatchScreenshot(options)
+
+- options
+  `key` <string> A unique key for your screenshot. This key will be used in Applittols Eyes.
+  `version` <string> A version. Used to create a new baseline. See [Creating a new baseline](https://github.com/wix-incubator/match-screenshot#creating-a-new-baseline) for more details.
 
 ## How does it work
 
