@@ -5,11 +5,15 @@
   "author": "Yaniv Efraim <yanivef@wix.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/wix-incubator/match-screenshot.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "posttest": "eslint .",
-    "test": "jest toMatchScreenshotJest.test.js && jest toMatchScreenshotChai.test.js"
+    "test": "jest toMatchScreenshotJest.test.js && jest toMatchScreenshotChai.test.js",
+    "release": "wnpm-release --no-shrinkwrap"
   },
   "jest": {
     "preset": "jest-puppeteer",
