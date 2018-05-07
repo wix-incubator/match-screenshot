@@ -60,7 +60,7 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
     it('my test', async () {
       await page.goto('http://www.wix.com');
       const screenshot = await page.screenshot();
-      expect(screenshot).toMatchScreenshot({description: 'my test'});
+      await expect(screenshot).toMatchScreenshot({description: 'my test'});
     });
     ```
 
@@ -73,7 +73,7 @@ When you change production code implementation, Eyes will break, and you will ha
   it('my test', async () {
     await page.goto('http://www.wix.com');
     const screenshot = await page.screenshot();
-    expect(screenshot).toMatchScreenshot({description: 'my test', {version: 'v1.0.1'}});
+    await expect(screenshot).toMatchScreenshot({description: 'my test', {version: 'v1.0.1'}});
   });
 ```
 
