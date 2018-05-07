@@ -21,4 +21,19 @@ describe('EYES', () => {
       );
     });
   });
+
+  test('should support a new baseline', async () => {
+    await global.page.setContent('<div>Hello World</div>');
+    const screenshot = await global.page.screenshot({fullpage: true});
+    await expect(screenshot).toMatchScreenshot({
+      key: 'Hello World',
+      version: 'v1.0.0',
+    });
+    await global.page.setContent('<div>Hello World 123</div>');
+    const screenshot2 = await global.page.screenshot({fullpage: true});
+    await expect(screenshot2).toMatchScreenshot({
+      key: 'Hello World',
+      version: 'v1.0.1',
+    });
+  });
 });
