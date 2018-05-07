@@ -1,6 +1,8 @@
 # match-screenshot
 
 [![Build Status](https://travis-ci.org/wix-incubator/match-screenshot.svg?branch=master)](https://travis-ci.org/wix-incubator/match-screenshot)
+[![npm](https://img.shields.io/npm/v/match-screenshot.svg)](https://www.npmjs.com/package/match-screenshot)
+
 
 A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](https://applitools.com/) (other platforms will be supported as well, TBD)
 
