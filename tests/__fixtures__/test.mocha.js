@@ -1,20 +1,15 @@
-const [, , , chaiToMatchScreenshot] = process.argv;
+const [, , , chaiToMatchScreenshot, browserWSEndpoint] = process.argv;
 const {Assertion, expect} = require('chai');
 
 const toMatchScreenshot = require(chaiToMatchScreenshot);
 
 Assertion.addMethod('toMatchScreenshot', toMatchScreenshot);
-
 it(`should work with chai`, async function() { // eslint-disable-line
   this.timeout(30000);
   const puppeteer = require('puppeteer');
 
-  const browser = await puppeteer.launch({
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage', // https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#tips
-    ],
+  const browser = await puppeteer.connect({
+    browserWSEndpoint,
   });
 
   const page = await browser.newPage();
@@ -23,5 +18,5 @@ it(`should work with chai`, async function() { // eslint-disable-line
   await expect(screenshot).toMatchScreenshot({
     key: 'should work with chai',
   });
-  await browser.close();
+  await browser.disconnect();
 });
