@@ -85,6 +85,15 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
       await page.waitForSelector('[data-hook="comment-form"]');
       await checkImage(await page.screenshot(), 'contact form opened');
     }));
+
+    it('my test with different version', withEyes(async checkImage => {
+      // ...
+    }, { version: 'v2.0.0' }));
+
+    it('override default 30s timeout', withEyes(async function (checkImage) {
+      this.timeout(600000);
+      // ...
+    }));
     ```
 
 ## Creating a new baseline
