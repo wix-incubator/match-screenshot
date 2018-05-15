@@ -11,8 +11,11 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
+    "start": "npm run test:watch",
     "posttest": "eslint .",
     "test": "jest --maxWorkers=3",
+    "test:watch": "npm test -- --watch",
+    "test:debug": "node --inspect-brk ./node_modules/.bin/jest --runInBand",
     "release": "wnpm-release --no-shrinkwrap"
   },
   "jest": {
@@ -39,6 +42,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^5.0.1",
-    "eyes.images": "^0.0.50"
+    "eyes.images": "^0.0.50",
+    "uuid": "^3.2.1"
   }
 }
