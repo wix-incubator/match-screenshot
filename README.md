@@ -66,17 +66,26 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
     });
     ```
 
-5. Using a wrapper test runner function
+5. Using a test runner higher order function:
 
-  ```js
-  const { withEyes } = require('match-screenshot/mocha');
-  it('my test', withEyes(async checkImage => {
-    await page.goto('http://www.wix.com');
-    await checkImage(await page.screenshot(), 'first page');
-    await page.goto('http://www.wix.com/page2');
-    await checkImage(await page.screenshot(), 'second page');
-  }));
-  ```
+    Currently only `mocha` test runner is being supported. `Jest` is on it's way.
+
+    ```js
+    const { withEyes } = require('match-screenshot/mocha');
+
+    it('my test', withEyes(async checkImage => {
+      await page.goto('http://www.wix.com');
+      await checkImage(await page.screenshot(), 'landing page');
+
+      await page.click('[data-hook="open-contacts"]');
+      await page.waitForSelector('[data-hook="contacts-page"]');
+      await checkImage(await page.screenshot(), 'contacts page');
+
+      await page.click('[data-hook="leave-comment"]');
+      await page.waitForSelector('[data-hook="comment-form"]');
+      await checkImage(await page.screenshot(), 'contact form opened');
+    }));
+    ```
 
 ## Creating a new baseline
 
