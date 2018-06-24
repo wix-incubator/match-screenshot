@@ -1,5 +1,5 @@
 {
   "preset": "jest-puppeteer",
   "testMatch": [ "**/tests/__fixtures__/*.jest.js"],
-  "setupTestFrameworkScriptFile": "<rootDir>/../../src/jest"
+  "setupTestFrameworkScriptFile": "<rootDir>/../../lib/jest"
 }

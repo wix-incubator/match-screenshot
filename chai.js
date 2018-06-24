@@ -1,1 +1,1 @@
-module.exports = require('./src/chai');
+module.exports = require('./lib/chai');
