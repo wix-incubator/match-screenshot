@@ -1,1 +1,1 @@
-module.exports = require('./lib/jest');
+module.exports = require('./src/jest');

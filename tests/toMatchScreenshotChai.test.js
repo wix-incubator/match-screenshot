@@ -8,7 +8,7 @@ describe('EYES', () => {
       const res = await execa('node', [
         require.resolve('mocha/bin/mocha'),
         require.resolve('./__fixtures__/test.mocha'),
-        require.resolve('../lib/chai'),
+        require.resolve('../src/chai'),
         browserWSEndpoint,
       ]);
       expect(res.stdout).toContain(
