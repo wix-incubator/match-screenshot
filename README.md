@@ -104,7 +104,7 @@ When you change production code implementation, Eyes will break, and you will ha
   `version` <[string]> (optional) Used to create a new baseline. See [Creating a new baseline](https://github.com/wix-incubator/match-screenshot#creating-a-new-baseline) for more details. Default value: 'v1.0.0'.
 
 
-#### jest-with-config([options])
+#### jestWithConfig([options])
 
 Configure your matcher with global options.
 
