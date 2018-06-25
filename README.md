@@ -119,7 +119,7 @@ Set the matcher:
 Inside `setupTestFrameworkScriptFile.js` you can then:
 
 ```js
-require('match-screenshot/jest-with-config')(options);
+require('match-screenshot/jestWithConfig')(options);
 ```
 
 - options
