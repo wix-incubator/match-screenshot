@@ -7,12 +7,12 @@ describe('EYES', () => {
   describe('Log', () => {
     test('should log after eyes success', async () => {
       const options = {
-        config: require.resolve('./__fixtures__/conf.json'),
+        config: require.resolve('./__fixtures__/jest-default/conf.json'),
       };
 
       const res = await execa('node', [
         require.resolve('jest/bin/jest'),
-        require.resolve('./__fixtures__/test.jest'),
+        require.resolve('./__fixtures__/jest-default/test.jest'),
         dargs(options),
       ]);
 
