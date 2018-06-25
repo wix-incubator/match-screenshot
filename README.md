@@ -103,6 +103,29 @@ When you change production code implementation, Eyes will break, and you will ha
 
   `version` <[string]> (optional) Used to create a new baseline. See [Creating a new baseline](https://github.com/wix-incubator/match-screenshot#creating-a-new-baseline) for more details. Default value: 'v1.0.0'.
 
+
+#### jest-with-config([options])
+
+Configure your matcher with global options.
+
+Set the matcher:
+
+```js
+"jest": {
+  "setupTestFrameworkScriptFile": "<rootDir>/setupTestFrameworkScriptFile.js"
+},
+```
+
+Inside `setupTestFrameworkScriptFile.js` you can then:
+
+```js
+require('match-screenshot/jest-with-config')(options);
+```
+
+- options
+
+  `appName` <[string]> Application name. Will be used inside Applitools as part of test title
+
 ## How does it work
 
 Everytime you use `toMatchScreenshot` matcher, a screenshot will be sent to [Applitools Eyes](https://applitools.com/), which will compare the new screenshot with the baseline. The test will fail if they are not equal.
