@@ -22,6 +22,24 @@ describe('EYES', () => {
     });
   });
 
+  describe('should works with configurations', () => {
+    test('should log after eyes success', async () => {
+      const options = {
+        config: require.resolve('./__fixtures__/jest-with-config/conf.json'),
+      };
+
+      const res = await execa('node', [
+        require.resolve('jest/bin/jest'),
+        require.resolve('./__fixtures__/jest-with-config/test.jest'),
+        dargs(options),
+      ]);
+
+      expect(res.stdout).toContain(
+        'eyes comparison succeed for test "should work with jest v1.0.0"',
+      );
+    });
+  });
+
   test('should support a new baseline', async () => {
     await global.page.setContent('<div>Hello World</div>');
     const screenshot = await global.page.screenshot({fullpage: true});
