@@ -46,6 +46,20 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
     },
     ```
 
+    In case you have several custom matchers in your project / you need `setupTestFrameworkScriptFile` for other configurations, just use:
+
+    ```js
+    "jest": {
+      "setupTestFrameworkScriptFile": "<rootDir>/setupTestFrameworkScriptFile.js"
+    },
+    ```
+
+    Inside `setupTestFrameworkScriptFile.js` you can then:
+
+    ```js
+    require('match-screenshot/jest');
+    ```
+
     ##### Chai
 
     ```js
