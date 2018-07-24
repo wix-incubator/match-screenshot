@@ -59,14 +59,14 @@ describe('EYES', () => {
     await global.page.setContent('<div>Hello World</div>');
     const screenshot = await global.page.screenshot({fullpage: true});
     await expect(screenshot).toMatchScreenshot({
-      key: 'Hello World',
+      key: 'Failing Hello World',
     });
     await global.page.setContent('<div>Hello World 123</div>');
     const screenshot2 = await global.page.screenshot({fullpage: true});
     let error;
     try {
       await expect(screenshot2).toMatchScreenshot({
-        key: 'Hello World',
+        key: 'Failing Hello World',
       });
     } catch (e) {
       error = e;
