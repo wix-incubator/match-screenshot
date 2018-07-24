@@ -89,7 +89,7 @@ When you change production code implementation, Eyes will break, and you will ha
   it('my test', async () {
     await page.goto('http://www.wix.com');
     const screenshot = await page.screenshot();
-    await expect(screenshot).toMatchScreenshot({key: 'my test', {version: 'v1.0.1'}});
+    await expect(screenshot).toMatchScreenshot({key: 'my test', version: 'v1.0.1'});
   });
 ```
 
