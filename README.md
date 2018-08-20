@@ -68,7 +68,7 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
     Assertion.addMethod('toMatchScreenshot', toMatchScreenshot);
     ```
 
-3. Use the matcher
+4. Use the matcher
 
     Puppeteer example:
 
@@ -80,6 +80,35 @@ A simple Jest or Chai matcher to compare screenshots, using [Applitools Eyes](ht
     });
     ```
 
+5. Using a test runner higher order function:
+
+    Currently only `mocha` test runner is being supported. `Jest` is on it's way.
+
+    ```js
+    const { withEyes } = require('match-screenshot/mocha');
+
+    it('my test', withEyes(async checkImage => {
+      await page.goto('http://www.wix.com');
+      await checkImage(await page.screenshot(), 'landing page');
+
+      await page.click('[data-hook="open-contacts"]');
+      await page.waitForSelector('[data-hook="contacts-page"]');
+      await checkImage(await page.screenshot(), 'contacts page');
+
+      await page.click('[data-hook="leave-comment"]');
+      await page.waitForSelector('[data-hook="comment-form"]');
+      await checkImage(await page.screenshot(), 'contact form opened');
+    }));
+
+    it('my test with different version', withEyes(async checkImage => {
+      // ...
+    }, { version: 'v2.0.0' }));
+
+    it('override default 30s timeout', withEyes(async function (checkImage) {
+      this.timeout(600000);
+      // ...
+    }));
+    ```
 
 ## Creating a new baseline
 
