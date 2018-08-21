@@ -1,7 +1,7 @@
 const execa = require('execa');
 const dargs = require('dargs');
 
-describe('EYES', () => {
+describe('EYES - Jest', () => {
   jest.setTimeout(30000);
 
   describe('Log', () => {

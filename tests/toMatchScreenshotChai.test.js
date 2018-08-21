@@ -1,6 +1,6 @@
 const execa = require('execa');
 
-describe('EYES', () => {
+describe('EYES - Chai', () => {
   jest.setTimeout(30000);
   describe('Log', () => {
     test('should log after eyes success', async () => {
