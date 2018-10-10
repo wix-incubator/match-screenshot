@@ -130,3 +130,13 @@ require('match-screenshot/jestWithConfig')(options);
 
 Everytime you use `toMatchScreenshot` matcher, a screenshot will be sent to [Applitools Eyes](https://applitools.com/), which will compare the new screenshot with the baseline. The test will fail if they are not equal.
 
+## Typescript defintions
+
+If you are using typescript and are missing type defintions for `toMatchScreenshot` you can add the following line to your to your tsconfig:
+
+```js
+ "files": [
+    "./node_modules/match-screenshot/index.d.ts",
+  ]
+```
+ 
