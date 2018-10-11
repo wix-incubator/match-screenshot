@@ -132,7 +132,7 @@ Everytime you use `toMatchScreenshot` matcher, a screenshot will be sent to [App
 
 ## Typescript defintions
 
-If you are using typescript and are missing type defintions for `toMatchScreenshot` you can add the following line to your to your tsconfig:
+If you are using typescript and are missing type defintions for `toMatchScreenshot` you can add the following line to your tsconfig:
 
 ```js
  "files": [
