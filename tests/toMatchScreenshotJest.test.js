@@ -1,34 +1,9 @@
-const execa = require('execa');
-const dargs = require('dargs');
-const conditionalTest = require('./conditionalTest');
+const {conditionalTest, getStdout} = require('./toMatchScreenshot.driver.js');
 
 describe('EYES', () => {
   jest.setTimeout(30000);
 
   const eyesApiKey = process.env.EYES_API_KEY;
-  describe('when EYES_API_KEY is missing', () => {
-    beforeAll(() => {
-      process.env.EYES_API_KEY = '';
-    });
-
-    test('should return success without accessing eyes', async () => {
-      await global.page.setContent('<div>Hello World 123</div>');
-      const screenshot2 = await global.page.screenshot({fullpage: true});
-      let error;
-      try {
-        await expect(screenshot2).toMatchScreenshot({
-          key: 'Failing Hello World',
-        });
-      } catch (e) {
-        error = e;
-      }
-      expect(error).toBeUndefined();
-    });
-
-    afterAll(() => {
-      process.env.EYES_API_KEY = eyesApiKey;
-    });
-  });
 
   if (!process.env.EYES_API_KEY) {
     console.log(
@@ -36,21 +11,46 @@ describe('EYES', () => {
       '>>> EYES_API_KEY is missing. For all the tests to run please add .env file to the root of the project with EYES_API_KEY=<your key here> <<<',
     );
   }
+
+  describe('when EYES_API_KEY is missing', () => {
+    beforeAll(() => {
+      process.env.EYES_API_KEY = '';
+    });
+
+    test('should return success without accessing eyes', async () => {
+      await global.page.setContent('<div>Hello World 123</div>');
+      const screenshot1 = await global.page.screenshot({fullpage: true});
+      let error;
+      try {
+        await expect(screenshot1).toMatchScreenshot({
+          key: 'Missing API key',
+        });
+
+        await global.page.setContent('<div>Hello World 1234</div>');
+        const screenshot2 = await global.page.screenshot({fullpage: true});
+
+        await expect(screenshot2).toMatchScreenshot({
+          key: 'Missing API key',
+        });
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toBeUndefined();
+      expect(await getStdout()).toContain(
+        'EYES_API_KEY not found. Eyes comparison skipped for test "should work with jest v1.0.0"',
+      );
+    });
+
+    afterAll(() => {
+      process.env.EYES_API_KEY = eyesApiKey;
+    });
+  });
+
   describe('Log', () => {
     conditionalTest(
       'should log after eyes success',
       async () => {
-        const options = {
-          config: require.resolve('./__fixtures__/jest-default/conf.json'),
-        };
-
-        const res = await execa('node', [
-          require.resolve('jest/bin/jest'),
-          require.resolve('./__fixtures__/jest-default/test.jest'),
-          dargs(options),
-        ]);
-
-        expect(res.stdout).toContain(
+        expect(await getStdout()).toContain(
           'eyes comparison succeed for test "should work with jest v1.0.0"',
         );
       },
@@ -62,17 +62,7 @@ describe('EYES', () => {
     conditionalTest(
       'should log after eyes success',
       async () => {
-        const options = {
-          config: require.resolve('./__fixtures__/jest-with-config/conf.json'),
-        };
-
-        const res = await execa('node', [
-          require.resolve('jest/bin/jest'),
-          require.resolve('./__fixtures__/jest-with-config/test.jest'),
-          dargs(options),
-        ]);
-
-        expect(res.stdout).toContain(
+        expect(await getStdout()).toContain(
           'eyes comparison succeed for test "should work with jest v1.0.0"',
         );
       },

@@ -1,5 +1,5 @@
 const execa = require('execa');
-const conditionalTest = require('./conditionalTest');
+const {conditionalTest} = require('./toMatchScreenshot.driver.js');
 
 describe('EYES', () => {
   jest.setTimeout(30000);
