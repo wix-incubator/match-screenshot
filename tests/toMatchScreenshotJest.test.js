@@ -1,4 +1,4 @@
-const {runTest, getStdout} = require('./toMatchScreenshot.driver.js');
+const {conditionalTest, executeTest} = require('./toMatchScreenshot.driver.js');
 
 describe('EYES', () => {
   jest.setTimeout(30000);
@@ -36,7 +36,7 @@ describe('EYES', () => {
         error = e;
       }
       expect(error).toBeUndefined();
-      expect(await getStdout()).toContain(
+      expect(await executeTest()).toContain(
         'EYES_API_KEY not found. Eyes comparison skipped for test "should work with jest v1.0.0"',
       );
     });
@@ -47,10 +47,10 @@ describe('EYES', () => {
   });
 
   describe('Log', () => {
-    runTest(
+    conditionalTest(
       'should log after eyes success',
       async () => {
-        expect(await getStdout()).toContain(
+        expect(await executeTest()).toContain(
           'eyes comparison succeed for test "should work with jest v1.0.0"',
         );
       },
@@ -59,10 +59,10 @@ describe('EYES', () => {
   });
 
   describe('should works with configurations', () => {
-    runTest(
+    conditionalTest(
       'should log after eyes success',
       async () => {
-        expect(await getStdout()).toContain(
+        expect(await executeTest()).toContain(
           'eyes comparison succeed for test "should work with jest v1.0.0"',
         );
       },
@@ -70,7 +70,7 @@ describe('EYES', () => {
     );
   });
 
-  runTest(
+  conditionalTest(
     'should support a new baseline',
     async () => {
       await global.page.setContent('<div>Hello World</div>');
@@ -89,7 +89,7 @@ describe('EYES', () => {
     eyesApiKey,
   );
 
-  runTest(
+  conditionalTest(
     'should fail',
     async () => {
       await global.page.setContent('<div>Hello World</div>');

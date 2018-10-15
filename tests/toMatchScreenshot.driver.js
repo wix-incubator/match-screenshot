@@ -1,11 +1,11 @@
 const execa = require('execa');
 const dargs = require('dargs');
 
-const runTest = (title, testLambda, condition) => {
+const conditionalTest = (title, testLambda, condition) => {
   condition ? test(title, testLambda) : test.skip(title);
 };
 
-const getStdout = async () => {
+const executeTest = async () => {
   const options = {
     config: require.resolve('./__fixtures__/jest-default/conf.json'),
   };
@@ -19,6 +19,6 @@ const getStdout = async () => {
 };
 
 module.exports = {
-  runTest,
-  getStdout,
+  conditionalTest,
+  executeTest,
 };
