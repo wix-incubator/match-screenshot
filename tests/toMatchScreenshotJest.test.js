@@ -1,4 +1,4 @@
-const {conditionalTest, getStdout} = require('./toMatchScreenshot.driver.js');
+const {runTest, getStdout} = require('./toMatchScreenshot.driver.js');
 
 describe('EYES', () => {
   jest.setTimeout(30000);
@@ -47,7 +47,7 @@ describe('EYES', () => {
   });
 
   describe('Log', () => {
-    conditionalTest(
+    runTest(
       'should log after eyes success',
       async () => {
         expect(await getStdout()).toContain(
@@ -59,7 +59,7 @@ describe('EYES', () => {
   });
 
   describe('should works with configurations', () => {
-    conditionalTest(
+    runTest(
       'should log after eyes success',
       async () => {
         expect(await getStdout()).toContain(
@@ -70,7 +70,7 @@ describe('EYES', () => {
     );
   });
 
-  conditionalTest(
+  runTest(
     'should support a new baseline',
     async () => {
       await global.page.setContent('<div>Hello World</div>');
@@ -89,7 +89,7 @@ describe('EYES', () => {
     eyesApiKey,
   );
 
-  conditionalTest(
+  runTest(
     'should fail',
     async () => {
       await global.page.setContent('<div>Hello World</div>');

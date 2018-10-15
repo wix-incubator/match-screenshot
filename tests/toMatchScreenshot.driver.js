@@ -1,7 +1,7 @@
 const execa = require('execa');
 const dargs = require('dargs');
 
-const conditionalTest = (title, testLambda, condition) => {
+const runTest = (title, testLambda, condition) => {
   condition ? test(title, testLambda) : test.skip(title);
 };
 
@@ -19,6 +19,6 @@ const getStdout = async () => {
 };
 
 module.exports = {
-  conditionalTest,
+  runTest,
   getStdout,
 };

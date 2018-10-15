@@ -1,10 +1,10 @@
 const execa = require('execa');
-const {conditionalTest} = require('./toMatchScreenshot.driver.js');
+const {runTest} = require('./toMatchScreenshot.driver.js');
 
 describe('EYES', () => {
   jest.setTimeout(30000);
   describe('Log', () => {
-    conditionalTest(
+    runTest(
       'should log after eyes success',
       async () => {
         const browserWSEndpoint = global.browser.wsEndpoint();
