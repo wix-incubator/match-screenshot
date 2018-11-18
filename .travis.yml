@@ -16,7 +16,9 @@ before_install:
 
 jobs:
   include:
-    - script: npm run test
+    - script: 
+      - npm run test
+      - npm run test2
       name: "Test"
     - script: npm run test1
       name: "Test 2"
