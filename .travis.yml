@@ -17,7 +17,9 @@ before_install:
 jobs:
   include:
     - script: npm run test
+      name: "Test"
     - script: npm run test1
+      name: "Test 2"
 notifications:
   email:
     recipients:
