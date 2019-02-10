@@ -70,77 +70,79 @@ describe('EYES', () => {
     );
   });
 
-  conditionalTest(
-    'should support a new baseline',
-    async () => {
-      await global.page.setContent('<div>Hello World</div>');
-      const screenshot = await global.page.screenshot({fullpage: true});
-      await expect(screenshot).toMatchScreenshot({
-        key: 'Hello World',
-        version: 'v1.0.0',
-      });
-      await global.page.setContent('<div>Hello World 123</div>');
-      const screenshot2 = await global.page.screenshot({fullpage: true});
-      await expect(screenshot2).toMatchScreenshot({
-        key: 'Hello World',
-        version: 'v1.0.1',
-      });
-    },
-    eyesApiKey,
-  );
-
-  conditionalTest(
-    'should fail',
-    async () => {
-      await global.page.setContent('<div>Hello World</div>');
-      const screenshot = await global.page.screenshot({fullpage: true});
-      await expect(screenshot).toMatchScreenshot({
-        key: 'Failing Hello World',
-      });
-      await global.page.setContent('<div>Hello World 123</div>');
-      const screenshot2 = await global.page.screenshot({fullpage: true});
-      let error;
-      try {
+  describe('basic flows', () => {
+    conditionalTest(
+      'should support a new baseline',
+      async () => {
+        await global.page.setContent('<div>Hello World</div>');
+        const screenshot = await global.page.screenshot({fullpage: true});
+        await expect(screenshot).toMatchScreenshot({
+          key: 'Hello World',
+          version: 'v1.0.0',
+        });
+        await global.page.setContent('<div>Hello World 123</div>');
+        const screenshot2 = await global.page.screenshot({fullpage: true});
         await expect(screenshot2).toMatchScreenshot({
+          key: 'Hello World',
+          version: 'v1.0.1',
+        });
+      },
+      eyesApiKey,
+    );
+
+    conditionalTest(
+      'should fail',
+      async () => {
+        await global.page.setContent('<div>Hello World</div>');
+        const screenshot = await global.page.screenshot({fullpage: true});
+        await expect(screenshot).toMatchScreenshot({
           key: 'Failing Hello World',
         });
-      } catch (e) {
-        error = e;
-      }
-      expect(error).toBeTruthy();
-    },
-    eyesApiKey,
-  );
+        await global.page.setContent('<div>Hello World 123</div>');
+        const screenshot2 = await global.page.screenshot({fullpage: true});
+        let error;
+        try {
+          await expect(screenshot2).toMatchScreenshot({
+            key: 'Failing Hello World',
+          });
+        } catch (e) {
+          error = e;
+        }
+        expect(error).toBeTruthy();
+      },
+      eyesApiKey,
+    );
 
-  conditionalTest(
-    'should not create new baseline for different image sizes when viewport is provided',
-    async () => {
-      const viewport = {width: 100, height: 100};
-      await global.page.setContent('<div id="container">Hello World</div>');
-      const container = await global.page.$('#container');
-      const screenshot = await container.screenshot({fullpage: true});
-      await expect(screenshot).toMatchScreenshot({
-        key: 'helloWorldWithViewport',
-        version: 'v1.0.0',
-        viewport,
-      });
-      await global.page.setContent(
-        '<div id="container" style="padding-bottom: 10px">Hello World</div>',
-      );
-      const container2 = await global.page.$('#container');
-      const screenshot2 = await container2.screenshot({fullpage: true});
-      let error;
-      try {
-        await expect(screenshot2).toMatchScreenshot({
+    conditionalTest(
+      'should not create new baseline for different image sizes when viewport is provided',
+      async () => {
+        const viewport = {width: 100, height: 100};
+        await global.page.setContent('<div id="container">Hello World</div>');
+        const container = await global.page.$('#container');
+        const screenshot = await container.screenshot({fullpage: true});
+        await expect(screenshot).toMatchScreenshot({
           key: 'helloWorldWithViewport',
           version: 'v1.0.0',
           viewport,
         });
-      } catch (e) {
-        error = e;
-      }
-      expect(error).toBeTruthy();
-    },
-    eyesApiKey,
-  );
+        await global.page.setContent(
+          '<div id="container" style="padding-bottom: 10px">Hello World</div>',
+        );
+        const container2 = await global.page.$('#container');
+        const screenshot2 = await container2.screenshot({fullpage: true});
+        let error;
+        try {
+          await expect(screenshot2).toMatchScreenshot({
+            key: 'helloWorldWithViewport',
+            version: 'v1.0.0',
+            viewport,
+          });
+        } catch (e) {
+          error = e;
+        }
+        expect(error).toBeTruthy();
+      },
+      eyesApiKey,
+    );
+  });
 });
