@@ -36,7 +36,7 @@ describe('EYES', () => {
         error = e;
       }
       expect(error).toBeUndefined();
-      expect(await executeTest()).toContain(
+      expect(await executeTest({fixture: 'jest-default'})).toContain(
         'EYES_API_KEY not found. Eyes comparison skipped for test "should work with jest v1.0.0"',
       );
     });
@@ -50,7 +50,7 @@ describe('EYES', () => {
     conditionalTest(
       'should log after eyes success',
       async () => {
-        expect(await executeTest()).toContain(
+        expect(await executeTest({fixture: 'jest-default'})).toContain(
           'eyes comparison succeed for test "should work with jest v1.0.0"',
         );
       },
@@ -62,7 +62,7 @@ describe('EYES', () => {
     conditionalTest(
       'should log after eyes success',
       async () => {
-        expect(await executeTest()).toContain(
+        expect(await executeTest({fixture: 'jest-with-config'})).toContain(
           'eyes comparison succeed for test "should work with jest v1.0.0"',
         );
       },
