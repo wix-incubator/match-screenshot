@@ -178,4 +178,21 @@ describe('EYES', () => {
       eyesApiKey,
     );
   });
+
+  describe('batch', () => {
+    conditionalTest(
+      'should support batch',
+      async () => {
+        const testOutput = await executeTest({fixture: 'jest-default-batch'});
+        expect(testOutput).toContain(
+          'eyes comparison succeed for test "my batch"',
+        );
+        const testOutput1 = await executeTest({fixture: 'jest-default-batch'});
+        expect(testOutput1).toContain(
+          'eyes comparison succeed for test "my batch"',
+        );
+      },
+      eyesApiKey,
+    );
+  });
 });
