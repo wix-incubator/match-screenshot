@@ -149,23 +149,24 @@ describe('EYES', () => {
     conditionalTest(
       'should except match style',
       async () => {
+        const randomVersion = Math.floor(Math.random() * Math.floor(10000000));
         const matchLevel = MatchLevel.Exact;
         await global.page.setContent('<div>Hello World</div>');
         const screenshot = await global.page.screenshot({fullpage: true});
         await expect(screenshot).toMatchScreenshot({
           key: 'helloWorldWithMatchLevelExact',
-          version: 'v1.0.0',
+          version: `v${randomVersion}`,
           matchLevel,
         });
         await global.page.setContent(
-          '<div style="color: #010101">Hello World</div>',
+          '<div style="color: #FFFF00">Hello World</div>',
         );
         const screenshot2 = await global.page.screenshot({fullpage: true});
         let error;
         try {
           await expect(screenshot2).toMatchScreenshot({
             key: 'helloWorldWithMatchLevelExact',
-            version: 'v1.0.0',
+            version: `v${randomVersion}`,
             matchLevel,
           });
         } catch (e) {
