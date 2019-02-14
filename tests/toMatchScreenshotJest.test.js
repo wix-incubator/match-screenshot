@@ -147,7 +147,7 @@ describe('EYES', () => {
     );
 
     conditionalTest(
-      'should except match style',
+      'should accept match style',
       async () => {
         const randomVersion = Math.floor(Math.random() * Math.floor(10000000));
         const matchLevel = MatchLevel.Exact;
