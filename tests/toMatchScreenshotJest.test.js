@@ -1,4 +1,5 @@
 const {conditionalTest, executeTest} = require('./toMatchScreenshot.driver.js');
+const MatchLevel = require('../matchLevel');
 
 describe('EYES', () => {
   jest.setTimeout(30000);
@@ -136,6 +137,36 @@ describe('EYES', () => {
             key: 'helloWorldWithViewport',
             version: 'v1.0.0',
             viewport,
+          });
+        } catch (e) {
+          error = e;
+        }
+        expect(error).toBeTruthy();
+      },
+      eyesApiKey,
+    );
+
+    conditionalTest(
+      'should except match style',
+      async () => {
+        const matchLevel = MatchLevel.Exact;
+        await global.page.setContent('<div>Hello World</div>');
+        const screenshot = await global.page.screenshot({fullpage: true});
+        await expect(screenshot).toMatchScreenshot({
+          key: 'helloWorldWithMatchLevelExact',
+          version: 'v1.0.0',
+          matchLevel,
+        });
+        await global.page.setContent(
+          '<div style="color: #010101">Hello World</div>',
+        );
+        const screenshot2 = await global.page.screenshot({fullpage: true});
+        let error;
+        try {
+          await expect(screenshot2).toMatchScreenshot({
+            key: 'helloWorldWithMatchLevelExact',
+            version: 'v1.0.0',
+            matchLevel,
           });
         } catch (e) {
           error = e;

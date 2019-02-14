@@ -104,7 +104,14 @@ When you change production code implementation, Eyes will break, and you will ha
   `version` <[string]> (optional) Used to create a new baseline. See [Creating a new baseline](https://github.com/wix-incubator/match-screenshot#creating-a-new-baseline) for more details. Default value: 'v1.0.0'.
 
   `viewport` <[string]> (optional) Explicitly pass viewport argument to Applitools api. This will prevent Applitools from [creating a new baseline](https://help.applitools.com/hc/en-us/articles/360007188691-What-is-a-baseline-and-how-is-a-baseline-created-) in case of a change in the screenshot actual viewport. Instead, it will fail the test.
-
+  
+  `matchLevel` <[enum]> (optional) Explicitly set [match level](https://help.applitools.com/hc/en-us/articles/360007188591-Match-Levels)
+  ```js
+  const MatchLevel = require('match-screenshot/matchLevel')
+  ...
+  await expect(screenshot).toMatchScreenshot({key: 'my test', matchLevel: MatchLevel.Explicit});
+    ```
+    
 
 #### jestWithConfig([options])
 
