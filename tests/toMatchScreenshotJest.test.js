@@ -185,11 +185,7 @@ describe('EYES', () => {
       async () => {
         const testOutput = await executeTest({fixture: 'jest-default-batch'});
         expect(testOutput).toContain(
-          'eyes comparison succeed for test "my batch"',
-        );
-        const testOutput1 = await executeTest({fixture: 'jest-default-batch'});
-        expect(testOutput1).toContain(
-          'eyes comparison succeed for test "my batch"',
+          'eyes comparison succeed for test "my batch',
         );
       },
       eyesApiKey,
