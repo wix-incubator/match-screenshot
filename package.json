@@ -13,7 +13,7 @@
   "scripts": {
     "posttest": "eslint .",
     "test": "jest --maxWorkers=3",
-    "release": "wnpm-release --no-shrinkwrap"
+    "release": "wnpm-release"
   },
   "jest": {
     "preset": "jest-puppeteer",
