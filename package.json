@@ -1,6 +1,6 @@
 {
   "name": "match-screenshot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "author": "Yaniv Efraim <yanivef@wix.com>",
   "repository": {
@@ -39,7 +39,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^5.0.1",
-    "eyes.images": "^0.0.50",
+    "eyes.images": "^3.6.2",
     "mkdirp": "^0.5.1"
   },
   "types": "./index.d.ts"
