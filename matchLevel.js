@@ -1,1 +1,1 @@
-module.exports = require('eyes.images').MatchLevel;
+module.exports = require('@applitools/eyes-images').MatchLevel;
