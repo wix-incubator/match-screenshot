@@ -94,22 +94,24 @@ describe('EYES', () => {
     conditionalTest(
       'should fail',
       async () => {
+        const key = 'Failing Hello World';
         await global.page.setContent('<div>Hello World</div>');
         const screenshot = await global.page.screenshot({fullpage: true});
         await expect(screenshot).toMatchScreenshot({
-          key: 'Failing Hello World',
+          key,
         });
         await global.page.setContent('<div>Hello World 123</div>');
         const screenshot2 = await global.page.screenshot({fullpage: true});
         let error;
         try {
           await expect(screenshot2).toMatchScreenshot({
-            key: 'Failing Hello World',
+            key,
           });
         } catch (e) {
           error = e;
         }
         expect(error).toBeTruthy();
+        expect(error.message).toContain(key);
       },
       eyesApiKey,
     );
@@ -173,6 +175,19 @@ describe('EYES', () => {
           error = e;
         }
         expect(error).toBeTruthy();
+      },
+      eyesApiKey,
+    );
+  });
+
+  describe('batch', () => {
+    conditionalTest(
+      'should support batch',
+      async () => {
+        const testOutput = await executeTest({fixture: 'jest-default-batch'});
+        expect(testOutput).toContain(
+          'eyes comparison succeed for test "my batch',
+        );
       },
       eyesApiKey,
     );
