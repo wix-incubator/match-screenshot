@@ -162,7 +162,6 @@ describe('EYES', () => {
         );
         const container2 = await global.page.$('#container');
         const screenshot2 = await container2.screenshot({fullpage: true});
-        console.log(screenshot2);
         let error;
         try {
           await expect(screenshot2).toMatchScreenshot({
