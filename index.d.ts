@@ -2,6 +2,6 @@
 
 declare namespace jest {
   interface Matchers<R> {
-    toMatchScreenshot(args: { key?: string; version?: string }): R;
+    toMatchScreenshot(args: { key?: string; version?: string; autoSaveNewTest?: boolean }): R;
   }
 }

@@ -147,6 +147,61 @@ describe('EYES', () => {
     );
 
     conditionalTest(
+      'should fail same test if page size was changed and autoSaveNewTest=false',
+      async () => {
+        await global.page.setContent('<div id="container">Hello World</div>');
+        const container = await global.page.$('#container');
+        const screenshot = await container.screenshot({fullpage: true});
+        await expect(screenshot).toMatchScreenshot({
+          key: 'helloWorldNoAutoSave',
+          version: 'v1.0.0',
+        });
+
+        await global.page.setContent(
+          '<div id="container" style="height: 420px;">Hello World</div>',
+        );
+        const container2 = await global.page.$('#container');
+        const screenshot2 = await container2.screenshot({fullpage: true});
+        let error;
+        try {
+          await expect(screenshot2).toMatchScreenshot({
+            key: 'helloWorldNoAutoSave',
+            version: 'v1.0.0',
+            autoSaveNewTest: false,
+          });
+        } catch (e) {
+          error = e;
+        }
+        expect(error).toBeTruthy();
+      },
+      eyesApiKey,
+    );
+
+    conditionalTest(
+      'should accept same test if page size was changed and autoSaveNewTest was not provided',
+      async () => {
+        await global.page.setContent('<div id="container">Hello World</div>');
+        const container = await global.page.$('#container');
+        const screenshot = await container.screenshot({fullpage: true});
+        await expect(screenshot).toMatchScreenshot({
+          key: 'helloWorldWithAutoSave',
+          version: 'v1.0.0',
+        });
+
+        await global.page.setContent(
+          '<div id="container" style="height: 777px;">Hello World</div>',
+        );
+        const container2 = await global.page.$('#container');
+        const screenshot2 = await container2.screenshot({fullpage: true});
+        await expect(screenshot2).toMatchScreenshot({
+          key: 'helloWorldWithAutoSave',
+          version: 'v1.0.0',
+        });
+      },
+      eyesApiKey,
+    );
+
+    conditionalTest(
       'should accept match style',
       async () => {
         const randomVersion = Math.floor(Math.random() * Math.floor(10000000));

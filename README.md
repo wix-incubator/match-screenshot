@@ -107,6 +107,8 @@ When you change production code implementation, Eyes will break, and you will ha
   `viewport` <[string]> (optional) Explicitly pass viewport argument to Applitools api. This will prevent Applitools from [creating a new baseline](https://help.applitools.com/hc/en-us/articles/360007188691-What-is-a-baseline-and-how-is-a-baseline-created-) in case of a change in the screenshot actual viewport. Instead, it will fail the test.
   
   `matchLevel` <[enum]> (optional) Explicitly set [match level](https://help.applitools.com/hc/en-us/articles/360007188591-Match-Levels)
+  
+  `autoSaveNewTest` <[boolean]> (optional) If you set it to false, every time that eyes will detect a new test(different viewport size, first run) it will fail the test and the baseline will need to be approved in Eyes. Default value: true.
   ```js
   const MatchLevel = require('match-screenshot/matchLevel')
   ...
