@@ -12,7 +12,7 @@
   },
   "scripts": {
     "posttest": "eslint .",
-    "test": "jest --maxWorkers=3",
+    "test": "node ./scripts/runTest.js",
     "release": "wnpm-release"
   },
   "jest": {
